@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jstl-1.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Desktop/5 сем/jstl-1.2.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/5 сем/log4j-1.2.15.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
