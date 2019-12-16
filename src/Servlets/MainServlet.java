@@ -28,7 +28,7 @@ public class MainServlet extends javax.servlet.http.HttpServlet {
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        List<Subscriber> subList = new ArrayList<Subscriber>();
+        List<Subscriber> subList = new ArrayList<>();
         String parseType = request.getParameter("parseType");
         if(parseType == null)
             response.sendRedirect("/form.jsp");

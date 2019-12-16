@@ -31,7 +31,7 @@ public class MyStaXParser {
     private boolean isFlat = false;
 
     public  List<Subscriber> parseXMLfile(String fileName) throws XMLStreamException, FileNotFoundException {
-        List<Subscriber> subList = new ArrayList<Subscriber>();
+        List<Subscriber> subList = new ArrayList<>();
         Subscriber sub = new Subscriber();
         PhoneNumber phoneNumber = new PhoneNumber();
         Address address = new Address();
@@ -93,7 +93,7 @@ public class MyStaXParser {
                             flatNumber = true;
                         }
 
-                        if (reader.getLocalName().equalsIgnoreCase("isFlat")) {
+                        if (reader.getLocalName().equals("isFlat")) {
                             isFlat = true;
                         }
                         break;
@@ -145,11 +145,7 @@ public class MyStaXParser {
                         }
 
                         if (homeNumber) {
-                            String buff = reader.getText();
-                            if(!buff.equals("true") && !buff.equals("false"))
-                                address.setHomeNumber(reader.getText());
-                            else
-                                address.setHomeNumber("");
+                            address.setHomeNumber(reader.getText());
                             homeNumber = false;
                         }
 
@@ -159,12 +155,7 @@ public class MyStaXParser {
                         }
 
                         if (flatNumber) {
-                            String buff = reader.getText();
-                            if(!buff.equals("true") && !buff.equals("false"))
-                                address.setFlatNumber(reader.getText());
-                            else
-                                address.setFlatNumber("");
-
+                            address.setFlatNumber(reader.getText());
                             flatNumber = false;
                         }
 

@@ -12,23 +12,23 @@ import java.util.List;
 
 public class MySAXHandler extends DefaultHandler {
 
-    private ArrayList<Subscriber> subList = new ArrayList<Subscriber>();
+    private List<Subscriber> subList;
     private Subscriber sub;
     private PhoneNumber phoneNumber;
     private Address address;
-    private boolean firstName = false;
-    private boolean patronymic = false;
-    private boolean lastName = false;
-    private boolean mobileOperator = false;
-    private boolean countryCode = false;
-    private boolean number = false;
-    private boolean fullPhoneNumber = false;
-    private boolean country = false;
-    private boolean city = false;
-    private boolean homeNumber = false;
-    private boolean street = false;
-    private boolean flatNumber = false;
-    private boolean isFlat = false;
+    private boolean firstName;
+    private boolean patronymic;
+    private boolean lastName;
+    private boolean mobileOperator;
+    private boolean countryCode;
+    private boolean number;
+    private boolean fullPhoneNumber;
+    private boolean country;
+    private boolean city;
+    private boolean homeNumber;
+    private boolean street;
+    private boolean flatNumber;
+    private boolean isFlat;
 
     @Override
     public void startElement(String uri, String localName, String qName,
@@ -95,7 +95,7 @@ public class MySAXHandler extends DefaultHandler {
     }
 
     @Override
-    public void characters(char ch[], int start, int length)
+    public void characters(char[] ch, int start, int length)
             throws SAXException {
 
         if (firstName) {
@@ -144,11 +144,7 @@ public class MySAXHandler extends DefaultHandler {
         }
 
         if (homeNumber) {
-            String buff = new String(ch, start, length);
-            if(!buff.equals("true") && !buff.equals("false"))
-                address.setHomeNumber(new String(ch, start, length));
-            else
-                address.setHomeNumber("");
+            address.setHomeNumber(new String(ch, start, length));
             homeNumber = false;
         }
 
@@ -158,11 +154,7 @@ public class MySAXHandler extends DefaultHandler {
         }
 
         if (flatNumber) {
-            String buff = new String(ch, start, length);
-            if(!buff.equals("true") && !buff.equals("false"))
-                address.setFlatNumber(new String(ch, start, length));
-            else
-                address.setFlatNumber("");
+            address.setFlatNumber(new String(ch, start, length));
 
             flatNumber = false;
         }
